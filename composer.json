@@ -1,0 +1,36 @@
+{
+  "name": "knot-lib/exception-handler-html",
+  "description": "HTML exception handler library for kNot Framework",
+  "keywords": ["PHP","Exception","kNot Framework","Exception Handler"],
+  "homepage": "https://github.com/knot-lib/exception-handler",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Katsuki Shuto",
+      "email": "stk2k@knot-framework.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "psr/log": "^1.0",
+    "stk2k/file": "~0.1",
+    "knot-lib/config": "~0.1",
+    "knot-lib/exception": "~0.1",
+    "knot-lib/exception-handler": "~0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.3.0",
+    "php-coveralls/php-coveralls": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "KnotLib\\ExceptionHandler\\Html\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "KnotLib\\ExceptionHandler\\Html\\Test\\": "test/"
+    }
+  }
+}
