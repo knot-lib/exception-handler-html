@@ -14,7 +14,7 @@ use Throwable;
 use ReflectionMethod;
 use Reflection;
 
-use stk2k\util\util;
+use stk2k\util\Util;
 
 use knotlib\exception\KnotPhpException;
 use knotlib\exceptionhandler\DebugtraceRendererInterface;
