@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\DebugtraceRenderer\Php;
+namespace knotlib\exceptionhandler\html\debugtracerenderer\php;
 
 class PhpSourceElement
 {
@@ -51,7 +51,7 @@ class PhpSourceElement
     /**
      *    IDを取得
      */
-    public function getID()
+    public function getID(): int
     {
         return $this->_id;
     }

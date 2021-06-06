@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\Test;
+namespace knotlib\exceptionhandler\html\test;
 
 use PHPUnit\Framework\TestCase;
-use KnotLib\Exception\Runtime\HttpStatusException;
-use KnotLib\ExceptionHandler\Html\DebugtraceRenderer\HtmlDebugtraceRenderer;
+
+use knotlib\exception\runtime\HttpStatusException;
+use knotlib\exceptionhandler\html\debugtracerenderer\HtmlDebugtraceRenderer;
 
 class HtmlDebugtraceRendererTest extends TestCase
 {

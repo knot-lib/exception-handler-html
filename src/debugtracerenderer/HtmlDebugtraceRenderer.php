@@ -8,16 +8,18 @@
 /** @noinspection HtmlRequiredTitleElement */
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\DebugtraceRenderer;
+namespace knotlib\exceptionhandler\html\debugtracerenderer;
 
 use Throwable;
 use ReflectionMethod;
 use Reflection;
-use Stk2k\Util\Util;
-use KnotLib\Exception\KnotPhpException;
-use KnotLib\ExceptionHandler\DebugtraceRendererInterface;
-use KnotLib\ExceptionHandler\Html\DebugtraceRenderer\Php\PhpSourceInfo;
-use KnotLib\Config\Config;
+
+use stk2k\util\util;
+
+use knotlib\exception\KnotPhpException;
+use knotlib\exceptionhandler\DebugtraceRendererInterface;
+use knotlib\exceptionhandler\html\debugtracerenderer\php\PhpSourceInfo;
+use knotlib\config\Config;
 
 class HtmlDebugtraceRenderer implements DebugtraceRendererInterface
 {
@@ -190,9 +192,8 @@ HTML_HEADER;
      */
     private function makeHtmlBody( Throwable $e, string $title, string $file, int $line ) : string
     {
-        $html = '';
 
-        $html .= '<div id="charcoal">' . PHP_EOL;
+        $html = '<div id="charcoal">' . PHP_EOL;
         $html .= '<h1><div class="value">' . $title . '</div></h1>' . PHP_EOL;
     
         // PHP info
@@ -230,7 +231,7 @@ HTML_HEADER;
         $no = 1;
         foreach( $php_ini as $key => $item )
         {
-            $local_value = isset($item['local_value']) ? $item['local_value'] : NULL;
+            $local_value = $item['local_value'] ?? NULL;
 
             $html .= '<tr>' . PHP_EOL;
             $html .= '  <th class="no" rowspan="2">' . $no . '</th>' . PHP_EOL;
@@ -359,7 +360,7 @@ HTML_HEADER;
         $html .= '' . PHP_EOL;
         $html .= '<table cellspacing="0" cellpadding="0" id="loaded_extensions" style="display:none">' . PHP_EOL;
         $no = 1;
-        foreach( $loaded_extensions as $name => $value )
+        foreach( $loaded_extensions as $value )
         {
             $html .= '<tr>' . PHP_EOL;
             $html .= '  <th class="no">' . $no . '</th>' . PHP_EOL;
@@ -529,12 +530,12 @@ HTML_HEADER;
         $html .= '<table cellspacing="0" cellpadding="0">' . PHP_EOL;
         $call_no = 1;
         foreach( $backtrace as $element ){
-            $klass = isset($element['class']) ? $element['class'] : '';
-            $func  = isset($element['function']) ? $element['function'] : '';
-            $type  = isset($element['type']) ? $element['type'] : '';
-            $args  = isset($element['args']) ? $element['args'] : array();
-            $file  = isset($element['file']) ? $element['file'] : '';
-            $line  = isset($element['line']) ? $element['line'] : 0;
+            $klass = $element['class'] ?? '';
+            $func  = $element['function'] ?? '';
+            $type  = $element['type'] ?? '';
+            $args  = $element['args'] ?? array();
+            $file  = $element['file'] ?? '';
+            $line  = $element['line'] ?? 0;
 
             if ( $type == "::" ){
                 $ref_method = new ReflectionMethod( $klass, $func );
@@ -581,7 +582,7 @@ HTML_HEADER;
                 }
                 $args_disp .= '</table>';
 
-                $message = "$modifiers {$klass}{$type}{$func}($args_defs)<br>$args_disp";
+                $message = "$modifiers $klass{$type}{$func}($args_defs)<br>$args_disp";
             }
             else{
                 $args_disp = '';

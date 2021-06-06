@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\DebugtraceRenderer\Php;
+namespace knotlib\exceptionhandler\html\debugtracerenderer\php;
 
-use KnotLib\ExceptionHandler\Html\Exception\PhpSourceParserException;
+use knotlib\exceptionhandler\html\exception\PhpSourceParserException;
 
 class PhpSourceParser
 {
@@ -126,12 +126,11 @@ class PhpSourceParser
                         if ( $delimiter ){
                             $tokens_line[] = new PhpSourceElement( $c, PhpSourceElement::TYPE_DELIMITER, $state );
                             $buffer = '';
-                            array_unshift( $done_buffer, $c );
                         }
                         else{
-                            $buffer .= (string)$c;
-                            array_unshift( $done_buffer, $c );
+                            $buffer .= $c;
                         }
+                        array_unshift( $done_buffer, $c );
                     }
                     break;
                 case self::LEXSTATE_BLOCK_COMMENT:
@@ -173,7 +172,7 @@ class PhpSourceParser
                     {
                         // エスケープ判定
                         if ( $c === '\\' ){
-                            $const_string_escaping = $const_string_escaping ? FALSE : TRUE;
+                            $const_string_escaping = !$const_string_escaping;
                         }
                         // 文字列定数脱出判定
                         if ( $c === '"' && !$const_string_escaping ){
@@ -191,7 +190,7 @@ class PhpSourceParser
                     {
                         // エスケープ判定
                         if ( $c === '\\' ){
-                            $const_string_escaping = $const_string_escaping ? FALSE : TRUE;
+                            $const_string_escaping = !$const_string_escaping;
                         }
                         // 文字列定数脱出判定
                         if ( $c === "'" && !$const_string_escaping ){

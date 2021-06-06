@@ -12,9 +12,9 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "psr/log": "^1.0",
-    "stk2k/file": "~0.1",
+    "stk2k/file-system": "~0.1",
     "knot-lib/config": "~0.1",
     "knot-lib/exception": "~0.1",
     "knot-lib/exception-handler": "~0.2"
@@ -25,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "KnotLib\\ExceptionHandler\\Html\\": "src/"
+      "knotlib\\exceptionhandler\\html\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "KnotLib\\ExceptionHandler\\Html\\Test\\": "test/"
+      "knotlib\\exceptionhandler\\html\\test\\": "test/"
     }
   }
 }

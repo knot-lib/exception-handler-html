@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\DebugtraceRenderer\Php;
+namespace knotlib\exceptionhandler\html\debugtracerenderer\php;
 
-use KnotLib\ExceptionHandler\Html\Exception\PhpSourceParserException;
+use knotlib\exceptionhandler\html\exception\PhpSourceParserException;
 
 class PhpSourceInfo
 {

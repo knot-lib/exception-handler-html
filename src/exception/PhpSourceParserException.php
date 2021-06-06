@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\Exception;
+namespace knotlib\exceptionhandler\html\exception;
 
 use Throwable;
-use KnotLib\ExceptionHandler\Exception\ExceptionHandlerException;
+
+use knotlib\exceptionhandler\exception\ExceptionHandlerException;
 
 
 class PhpSourceParserException extends ExceptionHandlerException

@@ -25,7 +25,7 @@ HTML exception handler library for kNot Framework.
 
 ## Requirement
 
-PHP 7.1 or later
+PHP 7.2 or later
 
 ## Installing knot-lib/exception-handler-html
 

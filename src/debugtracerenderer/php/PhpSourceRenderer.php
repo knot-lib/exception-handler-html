@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace KnotLib\ExceptionHandler\Html\DebugtraceRenderer\Php;
+namespace knotlib\exceptionhandler\html\debugtracerenderer\php;
 
 class PhpSourceRenderer
 {
@@ -28,23 +28,23 @@ class PhpSourceRenderer
             $end = count($tokens);
         }
 
-        $class = isset($classes['source_code']) ? $classes['source_code'] : 'source_code';
+        $class = $classes['source_code'] ?? 'source_code';
         $html = "<pre class=\"$class\">";
 
         for( $i=$start; $i<$end; $i++ ){
             // 行
             $even_odd = (($i % 2) === 0) ? 'even' : 'odd';
-            $class = isset($classes[$even_odd]) ? $classes[$even_odd] : $even_odd;
+            $class = $classes[$even_odd] ?? $even_odd;
             $html .= "<div class=\"$class\">";
             // 行番号
             if ( $number_format ){
-                $class = isset($classes['line_no']) ? $classes['line_no'] : 'line_no';
+                $class = $classes['line_no'] ?? 'line_no';
                 $line_no = sprintf( $number_format, $i );
                 $html .= "<span class=\"$class\">$line_no</span>";
             }
             // ソースコード
             /** @var array $tokens_line */
-            $tokens_line = isset($tokens[$i]) ? $tokens[$i] : array();
+            $tokens_line = $tokens[$i] ?? array();
             $cnt = count($tokens_line);
             for( $j=0; $j<$cnt; $j++ ){
                 $token = $tokens_line[$j];
@@ -61,7 +61,7 @@ class PhpSourceRenderer
                 case PhpSourceElement::TYPE_DELIMITER:        $type = 'delimiter';        break;
                 case PhpSourceElement::TYPE_CONST_STRING:    $type = 'const_string';        break;
                 }
-                $class = isset($classes[$type]) ? $classes[$type] : $type;
+                $class = $classes[$type] ?? $type;
                 $html .= "<span class=\"$class\">$code</span>";
             }
             $html .= "</div>";
